@@ -1,4 +1,5 @@
 import java.util.Scanner;
+package main;
 
 public class Menu1 {
 
@@ -51,7 +52,7 @@ public class Menu1 {
 					graphe.ajoutPreference(pref);
 					break;
 
-					case 3 : System.out.println("Voici les préferences:");
+					case 3 : System.out.println("Voici les prÃ©ferences:");
 					System.out.println(graphe.toString());
 					break;
 				}
@@ -71,7 +72,7 @@ public class Menu1 {
 				System.out.println("***** MENU numero 2 *****");
 
 				System.out.println("1- echanger objet");
-				System.out.println("2- afficher coût");
+				System.out.println("2- afficher coÃ»t");
 				System.out.println("3- fin");
 				option= sc.nextInt();
 
@@ -85,7 +86,7 @@ public class Menu1 {
 					System.out.println(affectation.toString());
 					break;
 
-					case 2 : System.out.println("Le cout est equivalent à : " +affectation.calculCout(graphe));
+					case 2 : System.out.println("Le cout est equivalent Ã  : " +affectation.calculCout(graphe));
 					break;
 				}
 				
