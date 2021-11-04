@@ -1,3 +1,4 @@
+package main;
 /**
  * Tests des différents méthodes des classes Graphe, Noeud et Affectation
  * @author Hu Tony, Constantine Benjohnson
@@ -6,7 +7,7 @@
 public class GrapheTest {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
 		Graphe graphe = new Graphe();
 		graphe.ajoutNoeud("A");
 		graphe.ajoutNoeud("B");
