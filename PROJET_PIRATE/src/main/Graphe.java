@@ -16,14 +16,14 @@ public class Graphe {
 	private Map<Noeud, List<Noeud>> adjacence;
 
 	/**
-	 * Construit un Graphe avec une nouvelle HashMap<Noeud, List<Noeud>>
+	 * Construit un Graphe avec une nouvelle HashMap
 	 */
 	public Graphe() {
 		adjacence = new HashMap<Noeud, List<Noeud>>();
 	}
 
 	/**
-	 * Insère une nouvelle clé Noeud créé avec l'étiquette en paramètre que l'on associe à une nouvelle ArrayList<Noeud> vide dans l'HashMap adjacence si possible.
+	 * Insère une nouvelle clé Noeud créé avec l'étiquette en paramètre que l'on associe à une nouvelle ArrayList vide dans l'HashMap adjacence si possible.
 	 * Sinon, print un message d'erreur
 	 * @param s l'étiquette du Noeud à ajouter
 	 */
@@ -35,7 +35,7 @@ public class Graphe {
 	}
 
 	/**
-	 * Retourne true si l'ajout d'une relation entre le pirate s et le pirate d est réussi, relation définie par insertion des noeuds dans chacune des ArrayList<Noeud> respectifs
+	 * Retourne true si l'ajout d'une relation entre le pirate s et le pirate d est réussi, relation définie par insertion des noeuds dans chacune des ArrayList respectifs
 	 * @param s noeud source
 	 * @param d noeud destination
 	 * @return true si ajout réussi, false sinon
@@ -88,7 +88,7 @@ public class Graphe {
 
 	/**
 	 * Retourne l'HashMap adjacence de l'objet
-	 * @return Map<Noeud, List<Noeud>> adjacence
+	 * @return Map&lt;Noeud, List&lt;Noeud&gt;&gt; adjacence
 	 */
 	public Map<Noeud, List<Noeud>> getMap(){
 		return adjacence;

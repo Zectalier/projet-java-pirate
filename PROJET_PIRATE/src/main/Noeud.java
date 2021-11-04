@@ -13,7 +13,7 @@ public class Noeud {
 	private List<String> preference;
 
 	/**
-	 * Construit un Noeud avec une ArrayList<String> vide et l'etiquette donné en paramètre
+	 * Construit un Noeud avec une ArrayList&lt;String&gt; vide et l'etiquette donné en paramètre
 	 * @param etiquette
 	 */
 	public Noeud(String etiquette) {
@@ -31,7 +31,7 @@ public class Noeud {
 
 	/**
 	 * Retourne la liste des préférences du noeud
-	 * @return List<String> preference
+	 * @return List&lt;String&gt; preference
 	 */
 	public List<String> getPreference(){
 		return preference;
@@ -39,7 +39,7 @@ public class Noeud {
 
 	/**
 	 * Modifie la liste des préférences du noeud par l'ArrayList en entré
-	 * @param newPreference un ArrayList<String> 
+	 * @param al un ArrayList&lt;String&gt; 
 	 */
 	public void setPreference(ArrayList<String> al) {
 		preference = al;
