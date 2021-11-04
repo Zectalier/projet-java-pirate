@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * Graphe d'objet Noeud comprenant une variable Map adjacence qui représente le graphe sous forme de liste d'adjacence
- * @author Hu Tony
+ * @author Hu Tony, Constantine Benjohnson
  *
  */
 public class Graphe {

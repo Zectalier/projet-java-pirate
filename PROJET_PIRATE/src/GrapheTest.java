@@ -1,6 +1,6 @@
 /**
  * Tests des différents méthodes des classes Graphe, Noeud et Affectation
- * @author Hu Tony
+ * @author Hu Tony, Constantine Benjohnson
  *
  */
 public class GrapheTest {

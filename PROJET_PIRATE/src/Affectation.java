@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * Map d'affectations des différents objets aux différents pirates
- * @author Hu Tony
+ * @author Hu Tony, Constantine Benjohnson
  *
  */
 public class Affectation {

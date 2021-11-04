@@ -3,7 +3,7 @@ import java.util.List;
 
 /**
  * Noeud représentant un pirate à qui on associe une etiquette et une liste de preference
- * @author Hu Tony
+ * @author Hu Tony, Constantine Benjohnson
  *
  */
 public class Noeud {
