@@ -32,7 +32,7 @@ public class Main {
 			do {
 				System.out.println("***** MENU *****");
 				System.out.println("1- Ajouter une relation");
-				System.out.println("2- Ajouter des preferences");
+				System.out.println("2- Ajouter des préférences");
 				System.out.println("3- Voir les preferences");
 				System.out.println("4- Fin");
 				choix = sc.nextInt();
@@ -46,19 +46,19 @@ public class Main {
 					graphe.ajoutRelation(e1,e2);
 					break;
 
-					case 2 : System.out.println("Nom du pirate suivi de ses preference :");
+					case 2 : System.out.println("Nom du pirate suivi de ses préférence :");
 					sc.nextLine();
 					pref = sc.nextLine();
 					graphe.ajoutPreference(pref);
 					break;
 
-					case 3 : System.out.println("Voici les pr�ferences:");
+					case 3 : System.out.println("Voici la liste d'adjacence des pirates ainsi que de leur préférences:");
 					System.out.println(graphe.toString());
 					break;
 				}
 
 				if (choix>4) {
-					System.out.println("erreur, votre choix ne figure pas dans le menu");
+					System.out.println("Erreur, votre choix ne figure pas dans le menu");
 				}
 			}while(choix !=4);
 
@@ -69,9 +69,9 @@ public class Main {
 			do {
 				System.out.println("***** MENU numero 2 *****");
 
-				System.out.println("1- echanger objet");
-				System.out.println("2- afficher co�t");
-				System.out.println("3- fin");
+				System.out.println("1- Echanger objet");
+				System.out.println("2- Afficher coût");
+				System.out.println("3- Fin");
 				option= sc.nextInt();
 
 				switch(option) {
@@ -84,12 +84,12 @@ public class Main {
 					System.out.println(affectation.toString());
 					break;
 
-					case 2 : System.out.println("Le cout est equivalent � : " +affectation.calculCout(graphe));
+					case 2 : System.out.println("Le cout est équivalent à : " +affectation.calculCout(graphe));
 					break;
 				}
 				
 				if (option>3) {
-					System.out.println("erreur, votre choix ne figure pas dans le menu");
+					System.out.println("Erreur, votre choix ne figure pas dans le menu");
 				}
 			}while(option !=3);
 			
