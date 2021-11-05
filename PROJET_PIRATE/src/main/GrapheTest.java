@@ -1,12 +1,15 @@
 package main;
 /**
- * Tests des différents méthodes des classes Graphe, Noeud et Affectation
+ * Classe qui comprends la méthode grapheTest() pour les tests des différents méthodes des classes Graphe, Noeud et Affectation
  * @author Hu Tony, Constantine Benjohnson
  *
  */
 public class GrapheTest {
 
-	public static void main(String[] args) {
+	/**
+	 * Méthode qui permet de faire différents tests pour les méthodes des classes Graphe, Noeud et Affectation
+	 */
+	public static void grapheTest() {
 
 		Graphe graphe = new Graphe();
 		graphe.ajoutNoeud("A");

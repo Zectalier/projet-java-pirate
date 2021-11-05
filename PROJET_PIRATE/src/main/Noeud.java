@@ -14,7 +14,7 @@ public class Noeud {
 
 	/**
 	 * Construit un Noeud avec une ArrayList&lt;String&gt; vide et l'etiquette donné en paramètre
-	 * @param etiquette
+	 * @param etiquette etiquette du nouveau noeud
 	 */
 	public Noeud(String etiquette) {
 		this.etiquette = etiquette;
