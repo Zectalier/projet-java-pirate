@@ -7,30 +7,31 @@ import java.util.Map;
 
 /**
  * Map d'affectations des différents objets aux différents pirates
- * @author Hu Tony, Constantine Benjohnson
+ * @author Hu Tony
+ * @author Constantine Benjohnson
  *
  */
 public class Affectation {
 
-	private Map<Noeud, String> affectation;
+	private Map<Pirate, String> affectation;
 
 	/**
-	 * Construit un objet Affectation avec une HashMap affectation depuis un Graphe graphe et un String listeobjet, 
+	 * Construit un objet Affectation avec une HashMap affectation depuis un Equipage graphe et un String listeobjet, 
 	 * listeobjet sous la forme "n1 n2 ... nk", 
 	 * et associe naivement à chaque clé Noeud de graphe dans la HashMap affectation un objet de la liste
-	 * @param graphe, graphe de k pirates
+	 * @param graphe, equipage de k pirates
 	 * @param listeobjet, liste de k objets/trésors sous forme "n1 n2 ... nk"
 	 */
-	public Affectation(Graphe graphe, String listeobjet) {
+	public Affectation(Equipage graphe, String listeobjet) {
 		boolean found;
 		int i;
-		affectation = new HashMap<Noeud, String>();
+		affectation = new HashMap<Pirate, String>();
 		String give;
 
 		String[] liste = listeobjet.split(" ");
 		ArrayList<String> al = new ArrayList<String>(Arrays.asList(liste));
 
-		for (Noeud v : graphe.getMap().keySet()) {
+		for (Pirate v : graphe.getMap().keySet()) {
 			found = false;
 			i = 0;
 			give = "Error";
@@ -52,14 +53,14 @@ public class Affectation {
 	 * @param graphe de k pirates
 	 * @return int cout de l'affectation
 	 */
-	public int calculCout(Graphe graphe) {
+	public int calculCout(Equipage graphe) {
 		int cout = 0;
 		int i;
 		boolean found;
 		String affecte,affecteVoisin;
 		int affectePosition, affectePositionVoisin;
 
-		for (Noeud v : graphe.getMap().keySet()) {
+		for (Pirate v : graphe.getMap().keySet()) {
 			found = false;
 			i = 0;
 			affecte = affectation.get(v);
@@ -75,12 +76,12 @@ public class Affectation {
 			while(!found) {
 
 				//On check pour chacun des voisins du pirate
-				for(Noeud u : graphe.getMap().get(v)) {
+				for(Pirate u : graphe.getMap().get(v)) {
 					affecteVoisin = affectation.get(u);
 					affectePositionVoisin = u.getPreference().indexOf(affecteVoisin);
 
-					//On regarde si l'ordre de préference de l'objet du voisin est inférieur à son ordre de préférence pour l'objet et que l'orde de l'objet qu'il a reçu est supérieur à SON ordre de l'objet du voisin
-					if(affectePositionVoisin<affectePosition && v.getPreference().indexOf(affecteVoisin)<affectePosition) {
+					//On regarde si l'ordre de préference de l'objet du voisin est inférieur ou égal à son ordre de préférence pour l'objet et que l'orde de l'objet qu'il a reçu est supérieur à SON ordre de l'objet du voisin
+					if(affectePositionVoisin<=affectePosition && v.getPreference().indexOf(affecteVoisin)<=affectePosition) {
 						cout++;
 						break;
 					}
@@ -98,8 +99,8 @@ public class Affectation {
 	 * @param s2 le deuxième pirate
 	 */
 	public void echanger(String s1, String s2) {
-		Noeud n1 = new Noeud(s1);
-		Noeud n2 = new Noeud(s2);
+		Pirate n1 = new Pirate(s1);
+		Pirate n2 = new Pirate(s2);
 		String objet1 = affectation.get(n1);
 		String objet2 = affectation.get(n2);
 		affectation.replace(n1, objet1, objet2);
@@ -115,7 +116,7 @@ public class Affectation {
 	{
 		StringBuilder builder = new StringBuilder();
 
-		for (Noeud v : affectation.keySet()) {
+		for (Pirate v : affectation.keySet()) {
 			builder.append(v.getEtiquette() + ": ");
 			builder.append(affectation.get(v));
 			builder.append("\n");

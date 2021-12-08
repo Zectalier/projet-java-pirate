@@ -3,11 +3,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Noeud représentant un pirate à qui on associe une etiquette et une liste de preference
- * @author Hu Tony, Constantine Benjohnson
+ * Class Pirate représentant un pirate auquel on associe une etiquette et une liste de preference
+ * @author Hu Tony
+ * @author Constantine Benjohnson
  *
  */
-public class Noeud {
+public class Pirate {
 
 	private String etiquette;
 	private List<String> preference;
@@ -16,7 +17,7 @@ public class Noeud {
 	 * Construit un Noeud avec une ArrayList&lt;String&gt; vide et l'etiquette donné en paramètre
 	 * @param etiquette etiquette du nouveau noeud
 	 */
-	public Noeud(String etiquette) {
+	public Pirate(String etiquette) {
 		this.etiquette = etiquette;
 		preference = new ArrayList<String>();
 	}

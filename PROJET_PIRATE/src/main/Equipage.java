@@ -7,19 +7,20 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Graphe d'objet Noeud comprenant une variable Map adjacence qui représente le graphe sous forme de liste d'adjacence
- * @author Hu Tony, Constantine Benjohnson
+ * Equipage de pirates comprenant une variable HashMap adjacence qui représente l'équipage en tant que graphe sous forme de liste d'adjacence
+ * @author Hu Tony
+ * @author Constantine Benjohnson
  *
  */
-public class Graphe {
+public class Equipage {
 
-	private Map<Noeud, List<Noeud>> adjacence;
+	private Map<Pirate, List<Pirate>> adjacence;
 
 	/**
 	 * Construit un Graphe avec une nouvelle HashMap
 	 */
-	public Graphe() {
-		adjacence = new HashMap<Noeud, List<Noeud>>();
+	public Equipage() {
+		adjacence = new HashMap<Pirate, List<Pirate>>();
 	}
 
 	/**
@@ -27,8 +28,8 @@ public class Graphe {
 	 * Sinon, print un message d'erreur
 	 * @param s l'étiquette du Noeud à ajouter
 	 */
-	public void ajoutNoeud(String s) {
-		Object obj = adjacence.putIfAbsent(new Noeud(s), new ArrayList<Noeud>());
+	public void ajoutPirate(String s) {
+		Object obj = adjacence.putIfAbsent(new Pirate(s), new ArrayList<Pirate>());
 		if(obj != null) {
 			System.out.println("Erreur, pirate déjà présent dans la liste");
 		}
@@ -41,9 +42,9 @@ public class Graphe {
 	 * @return true si ajout réussi, false sinon
 	 */
 	public boolean ajoutRelation(String s, String d) {
-		Noeud n1 = new Noeud("");
-		Noeud n2 = new Noeud("");
-		for(Noeud v : adjacence.keySet()) {
+		Pirate n1 = new Pirate("");
+		Pirate n2 = new Pirate("");
+		for(Pirate v : adjacence.keySet()) {
 			if(v.getEtiquette().equals(s)) {
 				n1 = v;
 			}
@@ -66,10 +67,10 @@ public class Graphe {
 	 */
 	public boolean ajoutPreference(String str) {
 		String[] liste = str.split(" ");
-		Noeud n = new Noeud("");
+		Pirate n = new Pirate("");
 		ArrayList<String> al = new ArrayList<String>(Arrays.asList(liste));
 		String etiquette = al.get(0);
-		for(Noeud v : adjacence.keySet()) {
+		for(Pirate v : adjacence.keySet()) {
 			if(v.getEtiquette().equals(etiquette)) {
 				n = v;
 			}
@@ -78,7 +79,7 @@ public class Graphe {
 			if((al.size()-1)==adjacence.size()) {
 				al.remove(0);
 				n.setPreference(al);
-				List<Noeud> values = adjacence.remove(new Noeud(etiquette));
+				List<Pirate> values = adjacence.remove(new Pirate(etiquette));
 				adjacence.put(n, values);
 				return true;
 			}
@@ -90,7 +91,7 @@ public class Graphe {
 	 * Retourne l'HashMap adjacence de l'objet
 	 * @return Map&lt;Noeud, List&lt;Noeud&gt;&gt; adjacence
 	 */
-	public Map<Noeud, List<Noeud>> getMap(){
+	public Map<Pirate, List<Pirate>> getMap(){
 		return adjacence;
 	}
 
@@ -103,9 +104,9 @@ public class Graphe {
 	{
 		StringBuilder builder = new StringBuilder();
 
-		for (Noeud v : adjacence.keySet()) {
+		for (Pirate v : adjacence.keySet()) {
 			builder.append(v.getEtiquette() + ": ");
-			for (Noeud w : adjacence.get(v)) {
+			for (Pirate w : adjacence.get(v)) {
 				builder.append(w.getEtiquette() + " ");
 			}
 			builder.append("; " + v.getPreference().toString());

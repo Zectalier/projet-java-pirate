@@ -1,7 +1,8 @@
 package main;
 /**
- * Classe qui comprends la méthode grapheTest() pour les tests des différents méthodes des classes Graphe, Noeud et Affectation
- * @author Hu Tony, Constantine Benjohnson
+ * Classe qui comprends la méthode grapheTest() pour les tests des différents méthodes des classes Equipage, Pirate et Affectation
+ * @author Hu Tony
+ * @author Constantine Benjohnson
  *
  */
 public class GrapheTest {
@@ -11,12 +12,12 @@ public class GrapheTest {
 	 */
 	public static void grapheTest() {
 
-		Graphe graphe = new Graphe();
-		graphe.ajoutNoeud("A");
-		graphe.ajoutNoeud("B");
-		graphe.ajoutNoeud("C");
-		graphe.ajoutNoeud("D");
-		graphe.ajoutNoeud("A");
+		Equipage graphe = new Equipage();
+		graphe.ajoutPirate("A");
+		graphe.ajoutPirate("B");
+		graphe.ajoutPirate("C");
+		graphe.ajoutPirate("D");
+		graphe.ajoutPirate("A");
 		graphe.ajoutRelation("A", "B");
 		graphe.ajoutRelation("D", "B");
 		graphe.ajoutRelation("C", "B");

@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 /**
  * Affichage d'un menu pour que l'utilisateur configure son equipage
- * @author Hu Tony, Constantine Benjohnson
+ * @author Hu Tony 
+ * @author Constantine Benjohnson
  * 
  */
 public class Main {
@@ -15,7 +16,7 @@ public class Main {
 		int n = 0;
 		String e1, e2, pref;
 		String listobj = "";
-		Graphe graphe = new Graphe();
+		Equipage graphe = new Equipage();
 		Affectation affectation;
 
 		while (!(n>0 && n<27)) {
@@ -26,7 +27,7 @@ public class Main {
 		char c = 'A';
 		for (int i=0; i<n; i++) {
 			String s = String.valueOf(c);
-			graphe.ajoutNoeud(s);
+			graphe.ajoutPirate(s);
 			listobj=listobj+(i+1)+" ";
 			c++;
 		}
@@ -67,7 +68,7 @@ public class Main {
 				break;
 
 			case 4 :
-				for (Noeud v : graphe.getMap().keySet()) {
+				for (Pirate v : graphe.getMap().keySet()) {
 					if(v.getPreference().isEmpty()) {
 						choix = 0;
 					}
