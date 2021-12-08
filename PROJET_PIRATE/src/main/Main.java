@@ -57,7 +57,7 @@ public class Main {
 				System.out.println("Nom du pirate suivi de ses préférence :");	
 				sc.nextLine();
 				pref = sc.nextLine();
-				if(!graphe.ajoutPreference(pref)) {
+				if(graphe.ajoutPreference(pref) != 0) {
 					System.out.println("Erreur dans l'ajout de préférence");
 				}
 				break;
