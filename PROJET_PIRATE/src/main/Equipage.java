@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Equipage de pirates comprenant une variable HashMap adjacence qui représente l'équipage en tant que graphe sous forme de liste d'adjacence
+ * Equipage de pirates comprenant une variable HashMap adjacence qui représente l'équipage en tant que graphe sous forme de liste d'adjacence ainsi qu'une variable objet qui représente la liste des objets/trésors disponible
  * @author Hu Tony
  * @author Constantine Benjohnson
  *
@@ -15,6 +15,7 @@ import java.util.Map;
 public class Equipage {
 
 	private Map<Pirate, List<Pirate>> adjacence;
+	private ArrayList<String> objets;
 
 	/**
 	 * Construit un Graphe avec une nouvelle HashMap
@@ -24,15 +25,16 @@ public class Equipage {
 	}
 
 	/**
-	 * Insère une nouvelle clé Noeud créé avec l'étiquette en paramètre que l'on associe à une nouvelle ArrayList vide dans l'HashMap adjacence si possible.
-	 * Sinon, print un message d'erreur
+	 * Tente d'insèrer une nouvelle clé Pirate créée avec l'étiquette en paramètre que l'on associe à une nouvelle ArrayList vide dans l'HashMap adjacence si il n'est pas deja dans notre equipage.
 	 * @param s l'étiquette du Noeud à ajouter
+	 * @return true si le pirate a été ajouté, false sinon
 	 */
-	public void ajoutPirate(String s) {
+	public boolean ajoutPirate(String s) {
 		Object obj = adjacence.putIfAbsent(new Pirate(s), new ArrayList<Pirate>());
 		if(obj != null) {
-			System.out.println("Erreur, pirate déjà présent dans la liste");
+			return false;
 		}
+		return true;
 	}
 
 	/**
@@ -61,11 +63,11 @@ public class Equipage {
 	}
 
 	/**
-	 * Prends en entrée un String str qui doit être de la forme "A n1 n2 ... nk" avec a le nom du Pirate et n1 n2 ... nk l'orde de préference de ses objets et modifie pour le pirate A sa liste de preference avec l'orde des préferences de str. Retourne vrai si l'opération est réussi, false sinon
+	 * Prends en entrée un String str qui doit être de la forme "A n1 n2 ... nk" avec a le nom du Pirate et n1 n2 ... nk l'orde de préference de ses objets et modifie pour le pirate A sa liste de preference avec l'orde des préferences de str. str doit exister dans la liste objets pour que l'operation soit réussit. Retourne vrai si l'opération est réussi, false sinon
 	 * @param str sous forme de "A n1 n2 ... nk", A nom du pirate et n1 n2 ... nk son ordre de préférence
-	 * @return true si ajout des preferences réussi, false sinon
+	 * @return 0 si ajout des preferences réussi, 1 si le pirate n'est pas dans l'equipage, 2 si l'objet n'est pas dans la liste
 	 */
-	public boolean ajoutPreference(String str) {
+	public int ajoutPreference(String str) {
 		String[] liste = str.split(" ");
 		Pirate n = new Pirate("");
 		ArrayList<String> al = new ArrayList<String>(Arrays.asList(liste));
@@ -78,13 +80,21 @@ public class Equipage {
 		if(adjacence.containsKey(n)) {
 			if((al.size()-1)==adjacence.size()) {
 				al.remove(0);
+				for(String obj : al) {
+					if(!objets.contains(obj)) {
+						return 2;
+					}
+				}
 				n.setPreference(al);
 				List<Pirate> values = adjacence.remove(new Pirate(etiquette));
 				adjacence.put(n, values);
-				return true;
+				return 0;
 			}
 		}
-		return false;
+		else {
+			return 1;
+		}
+		return -1;
 	}
 
 	/**
@@ -95,6 +105,28 @@ public class Equipage {
 		return adjacence;
 	}
 
+	/**
+	 * Ajoute un nouvel objet dans la liste d'objets si il n'y est pas et retourne true si l'operation est réussi. Retourne false sinon
+	 * @param str
+	 * @return true si ajout objet réussi, false sinon
+	 */
+	public boolean ajoutObjet(String str) {
+		if(!objets.contains(str)) {
+			objets.add(str);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	/**
+	 * Retourne le nombre d'objets/la taille de la liste objets
+	 * @return int
+	 */
+	public int getObjetCount() {
+		return objets.size();
+	}
+	
 	/**
 	 * Retourne un string qui comprends la liste d'adjacence du graphe ainsi que les préférences de chacun des pirates
 	 * @return String
