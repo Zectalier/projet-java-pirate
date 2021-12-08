@@ -39,7 +39,7 @@ public class Pirate {
 	}
 
 	/**
-	 * Modifie la liste des préférences du noeud par l'ArrayList en entré
+	 * Modifie la liste des préférences du noeud par l'ArrayList en entrée
 	 * @param al un ArrayList&lt;String&gt; 
 	 */
 	public void setPreference(ArrayList<String> al) {
