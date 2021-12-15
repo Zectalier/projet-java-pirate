@@ -31,16 +31,16 @@ public class GrapheTest {
 		System.out.println(graphe.ajoutPreference("A 1 2 3"));
 
 		System.out.println("Graphe:\n"+ graphe.toString());
-		Affectation affectation = new Affectation(graphe,"1 2 3 4");
+		Affectation affectation = new Affectation(graphe);
 		System.out.println("Affectation:\n"+ affectation.toString());
-		System.out.println("Cout: "+affectation.calculCout(graphe));
+		System.out.println("Cout: "+affectation.calculCout());
 		affectation.echanger("C","B");
 		affectation.echanger("A","B");
 		System.out.println("Affectation:\n"+ affectation.toString());
-		System.out.println("Cout: "+affectation.calculCout(graphe));
+		System.out.println("Cout: "+affectation.calculCout());
 		affectation.echanger("A","B");
 		System.out.println("Affectation:\n"+ affectation.toString());
-		System.out.println("Cout: "+affectation.calculCout(graphe));
+		System.out.println("Cout: "+affectation.calculCout());
 	}
 
 }
