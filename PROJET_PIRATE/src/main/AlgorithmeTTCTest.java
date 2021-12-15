@@ -1,7 +1,16 @@
 package main;
 
+/**
+ * Class de test pour AlgorithmeTTC
+ * @author Hu Tony
+ *
+ */
 public class AlgorithmeTTCTest {
 
+	/**
+	 * Méthode main du test
+	 * @param args non nécessaire
+	 */
 	public static void main (String[]args) {
 		
 		Equipage graphe = new Equipage();

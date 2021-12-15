@@ -1,36 +1,51 @@
 package main;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.File;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+/**
+ * Classe qui permet de sauvegarder une liste d'affectation
+ * @author Constantine Benjohnson
+ * 
+ */
 public class Sauvegarde {
-	public static void sauvegarde(Affectation affectation) {
-		
-		StringBuffer solution = new StringBuffer();
-		for(Pirate p : affectation.getAffectation().keySet()) {
-			solution.append(p.getEtiquette()+":"+affectation.getAffectation().get(p)+"\n");
-        }
-		boolean end = false;
-		do {
-			
-			System.out.println("Quel est le nom du fichier pour la sauvegarde ?");
-			@SuppressWarnings("resource")
-			Scanner s = new Scanner (System.in);
-			String NomFichier = s.nextLine();
 	
+	/**
+	 * Méthode qui permet de sauvegarder une liste d'affectation.<p>
+	 * La méthode sauvegarde le fichier à l'emplacement "solution/'nomfichier'.txt"
+	 * @param affectation Affectation
+	 * @param sc Scanner
+	 */
+	public static void sauvegarde(Affectation affectation, Scanner sc) {
+		
+		StringBuffer sb = new StringBuffer();
+		boolean end = false;
+		File file;
+		
+		for(Pirate p : affectation.getAffectation().keySet()) {
+			sb.append(p.getEtiquette()+":"+affectation.getAffectation().get(p)+"\n");
+        }
+		
+		do {
+			System.out.println("Quel est le nom du fichier pour la sauvegarde ?");
+			sc.nextLine();
+			String nomFichier = sc.nextLine();
+			if(!nomFichier.endsWith(".txt")) {
+				nomFichier += ".txt";
+			}
+			file = new File("solution/"+nomFichier);
 			try {
-				PrintWriter fichier = new PrintWriter (NomFichier+".txt","UTF-8");
-				fichier.print(solution.toString());
+				PrintWriter fichier = new PrintWriter(file);
+				fichier.print(sb.toString());
 				fichier.close();
 				end = true;
-			}catch(FileNotFoundException e) {
-				System.out.println("Le fichier n'a pas été trouvé");
-			} catch (IOException e) {
+			}catch(Exception e) {
 				e.printStackTrace();
 			}
-			//s.close();
 		}while(!end);
+		
+		System.out.println("Votre fichier a été sauvegardé à l'emplacement : "+ file.getAbsolutePath());
 	}
+	
 }

@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/***
+/**
+ * -NOT ACTUALLY USED-<p>
  * Classe qui essaye de résoudre le problème avec l'algorithme Top Trading Cycle, 
  * cependant ne marche pas pour trouver une solution optimale dans notre problème du à la jalousie possible entre pirates.
  * En effet l'algorithme essaye de trouver une solution le plus équitable possible, mais prends pas en compte d'éventuel problèmes de jalousie 
@@ -16,6 +17,10 @@ public class AlgorithmeTTC {
 
 	private Map<Pirate, String> affectation;
 	
+	/**
+	 * Constructeur tentant de créer une affectation à l'aide de l'algorithme TTC
+	 * @param affectation Affectation
+	 */
 	public AlgorithmeTTC(Affectation affectation) {
 		//Affectation affectation = new Affectation(graphe,listeobjet);
 		Map<Pirate, String> topPrefTout = new HashMap<Pirate, String>();
@@ -61,6 +66,13 @@ public class AlgorithmeTTC {
 		this.affectation = affectation.getAffectation();
 	}
 	
+	/**
+	 * Méthode permettant d'obtenir le "top" préférence toujours disponible
+	 * @param pirate Pirate
+	 * @param listePirate liste
+	 * @param affectation Affectation
+	 * @return String
+	 */
 	private String topPreference(Pirate pirate, Map<Pirate,ArrayList<String>>listePirate, Affectation affectation) {
 		int i = 0;
 		boolean found;
@@ -92,6 +104,11 @@ public class AlgorithmeTTC {
 		return topPref;
 	}
 	
+	/**
+	 * Algorithme de calcul du cout (même que dans Affectation)
+	 * @param graphe Equipage
+	 * @return int
+	 */
 	public int calculCout(Equipage graphe) {
 		int cout = 0;
 		int i;

@@ -4,8 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Classe héritant de la classe Affectation. Permet de faire l'affectation automatique des trésors à l'aide de l'algorithme proposé dans le sujet
+ * @author Hu Tony
+ * @author Constantine Benjohnson
+ */
 public class AffectationAutomatique extends Affectation{
 	
+	/**
+	 * Constructeur. Construit une AffectationAutomatique à l'aide d'un equipage.<p>
+	 * Il est demandé de fournir un entier k afin de détermnier combien de fois l'algorithme va tenter de choisir des pirates à échanger.
+	 * @param equipage Equipage
+	 * @param k int
+	 */
 	public AffectationAutomatique(Equipage equipage, int k) {
 		super(equipage);
 		List<Pirate> keysAsArray = new ArrayList<Pirate>(affectation.keySet());
@@ -22,46 +33,6 @@ public class AffectationAutomatique extends Affectation{
 				affectation = a.getAffectation();
 			}
 		}
-	}
-	
-	public int calculCout(Equipage graphe) {
-		int cout = 0;
-		int i;
-		boolean found;
-		String affecte,affecteVoisin;
-		int affectePosition, affectePositionVoisin;
-
-		for (Pirate v : graphe.getMap().keySet()) {
-			found = false;
-			i = 0;
-			affecte = affectation.get(v);
-			affectePosition = v.getPreference().indexOf(affecte);
-
-			//Cas si trésor affecté est le favori du pirate
-			if(i == 0) {
-				if(affecte.equals(v.getPreference().get(0))) {
-					found = true;
-				}
-			}
-
-			while(!found) {
-
-				//On check pour chacun des voisins du pirate
-				for(Pirate u : graphe.getMap().get(v)) {
-					affecteVoisin = affectation.get(u);
-					affectePositionVoisin = u.getPreference().indexOf(affecteVoisin);
-
-					//On regarde si l'ordre de préference de l'objet du voisin est inférieur ou égal à son ordre de préférence pour l'objet et que l'ordre de l'objet qu'il a reçu est supérieur à SON ordre de l'objet du voisin
-					if(affectePositionVoisin<=affectePosition && v.getPreference().indexOf(affecteVoisin)<affectePosition) {
-						cout++;
-						break;
-					}
-				}
-				found = true;
-			}
-		}
-
-		return cout;
 	}
 	
 	@Override

@@ -3,22 +3,23 @@ package main;
 import java.util.Scanner;
 
 /**
- * Affichage d'un menu pour que l'utilisateur configure son equipage
+ * Main Class. Contient la méthode main.
  * @author Hu Tony 
  * @author Constantine Benjohnson
  * 
  */
 public class Main {
 	
+	/**
+	 * Méthode principale
+	 * @param args non necessaire
+	 */
 	public static void main (String[]args) {
 		
-		System.out.println("Nom du fichier");
-		@SuppressWarnings("resource")
-		Scanner s = new Scanner (System.in);
-		String NomFichier = s.nextLine();
+		Equipage equipage;
+		Scanner sc = new Scanner(System.in);
+		equipage = Menu.loadFile(sc);
+		Menu.menuCommand(equipage,sc);
 		
-		Equipage graphe = ParserEquipage.parseFile(NomFichier);
-		Affectation affectation = new Affectation (graphe);
-		Menu.menuCommand(affectation, graphe);
 	}
 }

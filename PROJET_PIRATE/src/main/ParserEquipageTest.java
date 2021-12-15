@@ -2,8 +2,17 @@ package main;
 
 import java.util.Scanner;
 
+/**
+ * Classe de test pour la class ParserEquipage
+ * @author Hu Tony
+ *
+ */
 public class ParserEquipageTest {
 
+	/**
+	 * Méthode main de la classe
+	 * @param args non nécessaire
+	 */
 	public static void main (String[]args) {
 		
 		System.out.println("Working Directory = " + System.getProperty("user.dir"));

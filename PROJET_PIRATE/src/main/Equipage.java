@@ -109,7 +109,7 @@ public class Equipage {
 
 	/**
 	 * Ajoute un nouvel objet dans la liste d'objets si il n'y est pas et retourne true si l'operation est réussi. Retourne false sinon
-	 * @param str
+	 * @param str nom de l'objet
 	 * @return true si ajout objet réussi, false sinon
 	 */
 	public boolean ajoutObjet(String str) {
@@ -131,7 +131,7 @@ public class Equipage {
 
 	/**
 	 * Retourne la liste des objets
-	 * @return ArrayList&ltString&gt
+	 * @return ArrayList&lt;String&gt;
 	 */
 	public ArrayList<String> getObjets(){
 		return objets;
