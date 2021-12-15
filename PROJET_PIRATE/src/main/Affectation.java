@@ -1,12 +1,11 @@
 package main;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * Map d'affectations des différents objets aux différents pirates
+ * Map d'affectations des diffÃ©rents objets aux diffÃ©rents pirates
  * @author Hu Tony
  * @author Constantine Benjohnson
  *
@@ -19,9 +18,9 @@ public class Affectation {
 	/**
 	 * Construit un objet Affectation avec une HashMap affectation depuis un Equipage graphe et un String listeobjet, 
 	 * listeobjet sous la forme "n1 n2 ... nk", 
-	 * et associe naivement à chaque clé Noeud de graphe dans la HashMap affectation un objet de la liste
+	 * et associe naivement Ã  chaque clÃ© Noeud de graphe dans la HashMap affectation un objet de la liste
 	 * @param graphe, equipage de k pirates
-	 * @param listeobjet, liste de k objets/trésors sous forme "n1 n2 ... nk"
+	 * @param listeobjet, liste de k objets/trÃ©sors sous forme "n1 n2 ... nk"
 	 */
 	public Affectation(Equipage graphe) {
 		boolean found;
@@ -29,7 +28,8 @@ public class Affectation {
 		affectation = new HashMap<Pirate, String>();
 		String give;
 
-		ArrayList<String> al = graphe.getObjets();
+		@SuppressWarnings("unchecked")
+		ArrayList<String> al = (ArrayList<String>)graphe.getObjets().clone();
 
 		for (Pirate v : graphe.getMap().keySet()) {
 			found = false;
@@ -50,7 +50,7 @@ public class Affectation {
 	}
 
 	/**
-	 * Calcul du cout en pirate "jaloux" de l'affectation des objets pour un graphe donné
+	 * Calcul du cout en pirate "jaloux" de l'affectation des objets pour un graphe donnÃ©
 	 * @param graphe de k pirates
 	 * @return int cout de l'affectation
 	 */
@@ -67,7 +67,7 @@ public class Affectation {
 			affecte = affectation.get(v);
 			affectePosition = v.getPreference().indexOf(affecte);
 
-			//Cas si trésor affecté est le favori du pirate
+			//Cas si trÃ©sor affectÃ© est le favori du pirate
 			if(i == 0) {
 				if(affecte.equals(v.getPreference().get(0))) {
 					found = true;
@@ -81,7 +81,7 @@ public class Affectation {
 					affecteVoisin = affectation.get(u);
 					affectePositionVoisin = u.getPreference().indexOf(affecteVoisin);
 
-					//On regarde si l'ordre de préference de l'objet du voisin est inférieur ou égal à son ordre de préférence pour l'objet et que l'ordre de l'objet qu'il a reçu est supérieur à SON ordre de l'objet du voisin
+					//On regarde si l'ordre de prÃ©ference de l'objet du voisin est infÃ©rieur ou Ã©gal Ã  son ordre de prÃ©fÃ©rence pour l'objet et que l'ordre de l'objet qu'il a reÃ§u est supÃ©rieur Ã  SON ordre de l'objet du voisin
 					if(affectePositionVoisin<=affectePosition && v.getPreference().indexOf(affecteVoisin)<affectePosition) {
 						cout++;
 						break;
@@ -95,10 +95,10 @@ public class Affectation {
 	}
 
 	/**
-	 * Echange les objets affecté aux pirates s1 et s2 dans la Map Affectation
+	 * Echange les objets affectÃ© aux pirates s1 et s2 dans la Map Affectation
 	 * @param s1 le premier pirate
-	 * @param s2 le deuxième pirate
-	 * @return int, 1 si premier pirate pas dans la liste de pirates, 2 si le deuxieme n'est pas dans la liste, 0 si ajout réussi
+	 * @param s2 le deuxiÃ¨me pirate
+	 * @return int, 1 si premier pirate pas dans la liste de pirates, 2 si le deuxieme n'est pas dans la liste, 0 si ajout rÃ©ussi
 	 */
 	public int echanger(String s1, String s2) {
 		Pirate n1 = new Pirate(s1);
@@ -120,7 +120,7 @@ public class Affectation {
 		return affectation;
 	}
 	/**
-	 * Retourne un string qui comprends la liste des objets affectés aux différents pirates
+	 * Retourne un string qui comprends la liste des objets affectÃ©s aux diffÃ©rents pirates
 	 * @return String
 	 */
 	@Override
