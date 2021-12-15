@@ -3,7 +3,6 @@ package main;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,14 +13,14 @@ import java.util.Map;
  */
 public class Equipage {
 
-	private Map<Pirate, List<Pirate>> adjacence;
+	private Map<Pirate, ArrayList<Pirate>> adjacence;
 	private ArrayList<String> objets;
 
 	/**
 	 * Construit un Graphe avec une nouvelle HashMap
 	 */
 	public Equipage() {
-		adjacence = new HashMap<Pirate, List<Pirate>>();
+		adjacence = new HashMap<Pirate, ArrayList<Pirate>>();
 		objets = new ArrayList<String>();
 	}
 
@@ -87,7 +86,7 @@ public class Equipage {
 					}
 				}
 				n.setPreference(al);
-				List<Pirate> values = adjacence.remove(new Pirate(etiquette));
+				ArrayList<Pirate> values = adjacence.remove(new Pirate(etiquette));
 				adjacence.put(n, values);
 				return 0;
 			}
@@ -100,9 +99,9 @@ public class Equipage {
 
 	/**
 	 * Retourne l'HashMap adjacence de l'objet
-	 * @return Map&lt;Noeud, List&lt;Noeud&gt;&gt; adjacence
+	 * @return Map&lt;Noeud, ArrayList&lt;Noeud&gt;&gt; adjacence
 	 */
-	public Map<Pirate, List<Pirate>> getMap(){
+	public Map<Pirate, ArrayList<Pirate>> getMap(){
 		return adjacence;
 	}
 
@@ -126,6 +125,14 @@ public class Equipage {
 	 */
 	public int getObjetCount() {
 		return objets.size();
+	}
+
+	/**
+	 * Retourne la liste des objets
+	 * @return ArrayList&ltString&gt
+	 */
+	public ArrayList<String> getObjets(){
+		return objets;
 	}
 	
 	/**
