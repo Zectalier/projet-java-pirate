@@ -10,19 +10,25 @@ public class ParserEquipageTest {
 		int choix = -1;
 		String nomFichier;
 		Equipage equipage;
+		AffectationAutomatique aff;
 		Scanner sc = new Scanner (System.in);
 		while(choix != 0) {
 			choix = sc.nextInt();
 			switch(choix) {
 				case 1:
+					sc.nextLine();
 					nomFichier = sc.nextLine();
 					equipage = ParserEquipage.parseFile(nomFichier);
 					System.out.println(equipage.toString());
+					aff = new AffectationAutomatique(equipage,10);
+					System.out.println(aff.toString());
 					break;
 				case 2:
 					nomFichier = "equipagetest.txt";
 					equipage = ParserEquipage.parseFile(nomFichier);
 					System.out.println(equipage.toString());
+					aff = new AffectationAutomatique(equipage,10);
+					System.out.println(aff.toString());
 					break;
 				case 3:
 					nomFichier = "equipagetesterreur.txt";
