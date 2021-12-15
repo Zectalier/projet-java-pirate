@@ -29,6 +29,7 @@ public class Main {
 			String s = String.valueOf(c);
 			graphe.ajoutPirate(s);
 			listobj=listobj+(i+1)+" ";
+			graphe.ajoutObjet(String.valueOf(i+1));
 			c++;
 		}
 
@@ -57,9 +58,16 @@ public class Main {
 				System.out.println("Nom du pirate suivi de ses préférence :");	
 				sc.nextLine();
 				pref = sc.nextLine();
-				if(graphe.ajoutPreference(pref) != 0) {
-					System.out.println("Erreur dans l'ajout de préférence");
+				if(graphe.ajoutPreference(pref) == 1) {
+					System.out.println("Erreur, nom du pirate ne fait pas partie de ceux dans l'Equipage");
 				}
+				else if(graphe.ajoutPreference(pref) == 2) {
+					System.out.println("Erreur, objet qui ne fait pas partie de la liste d'objet disponible");
+				}
+				else if(graphe.ajoutPreference(pref) == -1) {
+					System.out.println("Erreur Critique!");
+				}
+				
 				break;
 
 			case 3 : 
