@@ -55,9 +55,11 @@ public class Equipage {
 			}
 		}
 		if(adjacence.containsKey(n1) && adjacence.containsKey(n2)) {
-			adjacence.get(n1).add(n2);
-			adjacence.get(n2).add(n1);
-			return true;
+			if(!adjacence.get(n1).contains(n2) && !adjacence.get(n2).contains(n1)) {
+				adjacence.get(n1).add(n2);
+				adjacence.get(n2).add(n1);
+				return true;
+			}
 		}
 		return false;
 	}
