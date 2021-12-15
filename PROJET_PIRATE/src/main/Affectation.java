@@ -80,8 +80,8 @@ public class Affectation {
 					affecteVoisin = affectation.get(u);
 					affectePositionVoisin = u.getPreference().indexOf(affecteVoisin);
 
-					//On regarde si l'ordre de préference de l'objet du voisin est inférieur ou égal à son ordre de préférence pour l'objet et que l'orde de l'objet qu'il a reçu est supérieur à SON ordre de l'objet du voisin
-					if(affectePositionVoisin<=affectePosition && v.getPreference().indexOf(affecteVoisin)<=affectePosition) {
+					//On regarde si l'ordre de préference de l'objet du voisin est inférieur ou égal à son ordre de préférence pour l'objet et que l'ordre de l'objet qu'il a reçu est supérieur à SON ordre de l'objet du voisin
+					if(affectePositionVoisin<=affectePosition && v.getPreference().indexOf(affecteVoisin)<affectePosition) {
 						cout++;
 						break;
 					}
@@ -97,14 +97,22 @@ public class Affectation {
 	 * Echange les objets affecté aux pirates s1 et s2 dans la Map Affectation
 	 * @param s1 le premier pirate
 	 * @param s2 le deuxième pirate
+	 * @return int, 1 si premier pirate pas dans la liste de pirates, 2 si le deuxieme n'est pas dans la liste, 0 si ajout réussi
 	 */
-	public void echanger(String s1, String s2) {
+	public int echanger(String s1, String s2) {
 		Pirate n1 = new Pirate(s1);
+		String objet1;
 		Pirate n2 = new Pirate(s2);
-		String objet1 = affectation.get(n1);
-		String objet2 = affectation.get(n2);
+		String objet2;
+		if(affectation.containsKey(n1)) {
+			objet1 = affectation.get(n1);
+		}else { return 1; }
+		if(affectation.containsKey(n2)) {
+			objet2 = affectation.get(n2);
+		}else { return 2; }
 		affectation.replace(n1, objet1, objet2);
 		affectation.replace(n2, objet2, objet1);
+		return 0;
 	}
 
 	/**
