@@ -1,6 +1,7 @@
 package main;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 
 public class ParserEquipage {
@@ -12,7 +13,7 @@ public class ParserEquipage {
 		try {
 			int ligneindex = 0;
 			int warning = 0;
-			FileReader fReader = new FileReader(file);
+			FileReader fReader = new FileReader("save/"+file);
 			BufferedReader bReader = new BufferedReader(fReader);
 			String ligne = null;
 			while((ligne = bReader.readLine()) != null) {
@@ -22,33 +23,33 @@ public class ParserEquipage {
 					return null;
 				}
 				else {
-					if(ligne.startsWith("pirate")) {
+					if(ligne.startsWith("pirate(")) {
 						if(!equipage.ajoutPirate(ligne.split("\\(")[1].split("\\)")[0])) {
-							System.out.println("Attention! Le pirate à votre ligne [" + ligneindex + "] n'a pas pu être ajouté, il se peut que le pirate est déjà présent dans votre équipage");
+							System.out.println("Attention! Le pirate à votre ligne [" + ligneindex + "] n'a pas pu être ajouté, il se peut que le pirate soit déjà présent dans votre équipage");
 							warning++;
 						}
 					}
-					else if(ligne.startsWith("objet")) {
+					else if(ligne.startsWith("objet(")) {
 						if(!equipage.ajoutObjet(ligne.split("\\(")[1].split("\\)")[0])) {
-							System.out.println("Attention! L'objet à votre ligne [" + ligneindex + "] n'a pas pu être ajouté, il se peut que l'objet est déjà présent dans votre équipage");
+							System.out.println("Attention! L'objet à votre ligne [" + ligneindex + "] n'a pas pu être ajouté, il se peut que l'objet soit déjà présent dans votre équipage");
 							warning++;
 						}
 					}
-					else if(ligne.startsWith("deteste")) {
+					else if(ligne.startsWith("deteste(")) {
 						if(!equipage.ajoutRelation(ligne.split("\\(")[1].split("\\)")[0].split(",")[0],ligne.split("\\(")[1].split("\\)")[0].split(",")[1])) {
 							System.out.println("Attention! La relation à votre ligne [" + ligneindex + "] n'a pas pu être ajouté, il se peut que les pirates ne soit pas présent dans l'équipage");
 							warning++;
 						}
 					}
-					else if(ligne.startsWith("preferences")) {
+					else if(ligne.startsWith("preferences(")) {
 						String[] lignesplitted = ligne.split("\\(")[1].split("\\)")[0].split(",");
 						if(lignesplitted.length < (equipage.getObjetCount()+1)) {
-							System.out.println("Erreur à votre ligne [" + ligneindex + "] la liste de preference n'a pas assez d'objets! Lors de la tentative d'ajout d'objet l'equipage a :" + equipage.getObjetCount() + "objets.");
+							System.out.println("Erreur à votre ligne [" + ligneindex + "] la liste de preference n'a pas assez d'objets! Lors de la tentative d'ajout d'objet l'equipage a : " + equipage.getObjetCount() + " objets.");
 							bReader.close();
 							return null;
 						}
 						if(lignesplitted.length > (equipage.getObjetCount()+1)) {
-							System.out.println("Erreur à votre ligne [" + ligneindex + "] la liste de preference a trop d'objets! Lors de la tentative d'ajout d'objet l'equipage a :" + equipage.getObjetCount() + "objets.");
+							System.out.println("Erreur à votre ligne [" + ligneindex + "] la liste de preference a trop d'objets! Lors de la tentative d'ajout d'objet l'equipage a : " + equipage.getObjetCount() + " objets.");
 							bReader.close();
 							return null;
 						}
@@ -61,11 +62,11 @@ public class ParserEquipage {
 						String str = sb.substring(0);
 						int retour = equipage.ajoutPreference(str);
 						if(retour == 1) {
-							System.out.println("Attention! nom pirate invalide à la ligne [" + ligneindex + "]! Il se peut que le pirate n'existe pas dans l'equipage");
+							System.out.println("Attention! Nom pirate invalide à la ligne [" + ligneindex + "]! Il se peut que le pirate n'existe pas dans l'equipage");
 							warning++;
 						}
 						else if(retour == 2) {
-							System.out.println("Attention! liste de preferences invalide à la ligne [" + ligneindex + "]! Il se peut que l'un ou plusieurs des objets que vous tentiez d'ajouter n'existe(nt) pas dans l'equipage");
+							System.out.println("Attention! Liste de preferences invalide à la ligne [" + ligneindex + "]! Il se peut que l'un ou plusieurs des objets que vous tentiez d'ajouter n'existe(nt) pas dans l'equipage");
 							warning++;
 						}
 					}
@@ -75,6 +76,7 @@ public class ParserEquipage {
 						return null;
 					}
 				}
+				ligneindex++;
 			}
 			for (Pirate v : equipage.getMap().keySet()) {
 				if(v.getPreference().isEmpty()) {
