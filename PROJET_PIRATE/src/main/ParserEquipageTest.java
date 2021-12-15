@@ -33,27 +33,27 @@ public class ParserEquipageTest {
 					System.out.println(aff.toString());
 					break;
 				case 2:
-					nomFichier = "equipagetest.txt";
+					nomFichier = "equipagetest";
 					equipage = ParserEquipage.parseFile(nomFichier);
 					System.out.println(equipage.toString());
 					aff = new AffectationAutomatique(equipage,10);
 					System.out.println(aff.toString());
 					break;
 				case 3:
-					nomFichier = "equipagetesterreur.txt";
+					nomFichier = "equipagetesterreur";
 					equipage = ParserEquipage.parseFile(nomFichier);
 					System.out.println(equipage.toString());
 					break;
 				case 4:
-					nomFichier = "equipagetsyntaxeincorrecte.txt";
+					nomFichier = "equipagetsyntaxeincorrecte";
 					equipage = ParserEquipage.parseFile(nomFichier);
 					break;
 				case 5:
-					nomFichier = "equipagespacevide.txt";
+					nomFichier = "equipagespacevide";
 					equipage = ParserEquipage.parseFile(nomFichier);
 					break;
 				case 6:
-					nomFichier = "equipagepreferenceincorrect.txt";
+					nomFichier = "equipagepreferenceincorrect";
 					equipage = ParserEquipage.parseFile(nomFichier);
 					break;
 				default:

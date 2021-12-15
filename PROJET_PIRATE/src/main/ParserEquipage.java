@@ -11,7 +11,7 @@ public class ParserEquipage {
 
 	/**
 	 * Méthode qui permet de lire un fichier et de construire un équipage avec le contenu du fichier.<p>
-	 * L'emplacement du fichier se trouve à "save/'nomfichier'.txt"
+	 * L'emplacement du fichier se trouve à "save/'nomfichier'"
 	 * @param file le nom du fichier
 	 * @return Equipage
 	 */

@@ -15,7 +15,7 @@ public class Menu {
 	/**
 	 * Méthode demandant à l'utilisateur de saisir le nom d'un fichier afin de récuperer 
 	 * un équipage à l'aide de la méthode présente dans ParserEquipage.java<p>
-	 * La méthode cherche le fichier à l'emplacement "save/'nomfichier'.txt"
+	 * La méthode cherche le fichier à l'emplacement "save/'nomfichier'"
 	 * @param sc Scanner
 	 * @return Equipage
 	 */
@@ -26,9 +26,6 @@ public class Menu {
 		Equipage equipage = new Equipage();
 		while(nomFichier.equals("")) {
 			nomFichier = sc.nextLine();
-			if(!nomFichier.endsWith(".txt")) {
-				nomFichier += ".txt";
-			}
 			file = new File("save/"+nomFichier);
 			if(!file.exists()) {
 				nomFichier = "";

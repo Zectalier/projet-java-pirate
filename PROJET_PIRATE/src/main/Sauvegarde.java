@@ -13,7 +13,7 @@ public class Sauvegarde {
 	
 	/**
 	 * Méthode qui permet de sauvegarder une liste d'affectation.<p>
-	 * La méthode sauvegarde le fichier à l'emplacement "solution/'nomfichier'.txt"
+	 * La méthode sauvegarde le fichier à l'emplacement "solution/'nomfichier'"
 	 * @param affectation Affectation
 	 * @param sc Scanner
 	 */
@@ -31,9 +31,6 @@ public class Sauvegarde {
 			System.out.println("Quel est le nom du fichier pour la sauvegarde ?");
 			sc.nextLine();
 			String nomFichier = sc.nextLine();
-			if(!nomFichier.endsWith(".txt")) {
-				nomFichier += ".txt";
-			}
 			file = new File("solution/"+nomFichier);
 			try {
 				PrintWriter fichier = new PrintWriter(file);
