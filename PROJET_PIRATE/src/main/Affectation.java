@@ -13,7 +13,8 @@ import java.util.Map;
  */
 public class Affectation {
 
-	private Map<Pirate, String> affectation;
+	protected Map<Pirate, String> affectation;
+	protected Equipage equipage;
 
 	/**
 	 * Construit un objet Affectation avec une HashMap affectation depuis un Equipage graphe et un String listeobjet, 
@@ -22,14 +23,13 @@ public class Affectation {
 	 * @param graphe, equipage de k pirates
 	 * @param listeobjet, liste de k objets/trésors sous forme "n1 n2 ... nk"
 	 */
-	public Affectation(Equipage graphe, String listeobjet) {
+	public Affectation(Equipage graphe) {
 		boolean found;
 		int i;
 		affectation = new HashMap<Pirate, String>();
 		String give;
 
-		String[] liste = listeobjet.split(" ");
-		ArrayList<String> al = new ArrayList<String>(Arrays.asList(liste));
+		ArrayList<String> al = graphe.getObjets();
 
 		for (Pirate v : graphe.getMap().keySet()) {
 			found = false;
@@ -46,6 +46,7 @@ public class Affectation {
 			}
 			affectation.put(v, give);
 		}
+		equipage = graphe;
 	}
 
 	/**
@@ -53,14 +54,14 @@ public class Affectation {
 	 * @param graphe de k pirates
 	 * @return int cout de l'affectation
 	 */
-	public int calculCout(Equipage graphe) {
+	public int calculCout() {
 		int cout = 0;
 		int i;
 		boolean found;
 		String affecte,affecteVoisin;
 		int affectePosition, affectePositionVoisin;
 
-		for (Pirate v : graphe.getMap().keySet()) {
+		for (Pirate v : equipage.getMap().keySet()) {
 			found = false;
 			i = 0;
 			affecte = affectation.get(v);
@@ -76,7 +77,7 @@ public class Affectation {
 			while(!found) {
 
 				//On check pour chacun des voisins du pirate
-				for(Pirate u : graphe.getMap().get(v)) {
+				for(Pirate u : equipage.getMap().get(v)) {
 					affecteVoisin = affectation.get(u);
 					affectePositionVoisin = u.getPreference().indexOf(affecteVoisin);
 
@@ -115,6 +116,9 @@ public class Affectation {
 		return 0;
 	}
 
+	public Map<Pirate, String> getAffectation(){
+		return affectation;
+	}
 	/**
 	 * Retourne un string qui comprends la liste des objets affectés aux différents pirates
 	 * @return String
