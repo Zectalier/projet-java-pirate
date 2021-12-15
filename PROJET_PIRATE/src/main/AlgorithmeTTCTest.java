@@ -2,7 +2,7 @@ package main;
 
 public class AlgorithmeTTCTest {
 
-public static void main (String[]args) {
+	public static void main (String[]args) {
 		
 		Equipage graphe = new Equipage();
 		graphe.ajoutObjet("1");

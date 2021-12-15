@@ -23,25 +23,25 @@ public class ParserEquipage {
 				}
 				else {
 					if(ligne.startsWith("pirate")) {
-						if(!equipage.ajoutPirate(ligne.split("//(")[1].split("//)")[0])) {
+						if(!equipage.ajoutPirate(ligne.split("\\(")[1].split("\\)")[0])) {
 							System.out.println("Attention! Le pirate à votre ligne [" + ligneindex + "] n'a pas pu être ajouté, il se peut que le pirate est déjà présent dans votre équipage");
 							warning++;
 						}
 					}
 					else if(ligne.startsWith("objet")) {
-						if(!equipage.ajoutObjet(ligne.split("//(")[1].split("//)")[0])) {
+						if(!equipage.ajoutObjet(ligne.split("\\(")[1].split("\\)")[0])) {
 							System.out.println("Attention! L'objet à votre ligne [" + ligneindex + "] n'a pas pu être ajouté, il se peut que l'objet est déjà présent dans votre équipage");
 							warning++;
 						}
 					}
 					else if(ligne.startsWith("deteste")) {
-						if(!equipage.ajoutRelation(ligne.split("//(")[1].split("//)")[0].split(",")[0],ligne.split("//(")[1].split("//)")[0].split(",")[1])) {
+						if(!equipage.ajoutRelation(ligne.split("\\(")[1].split("\\)")[0].split(",")[0],ligne.split("\\(")[1].split("\\)")[0].split(",")[1])) {
 							System.out.println("Attention! La relation à votre ligne [" + ligneindex + "] n'a pas pu être ajouté, il se peut que les pirates ne soit pas présent dans l'équipage");
 							warning++;
 						}
 					}
 					else if(ligne.startsWith("preferences")) {
-						String[] lignesplitted = ligne.split("//(")[1].split("//)")[0].split(",");
+						String[] lignesplitted = ligne.split("\\(")[1].split("\\)")[0].split(",");
 						if(lignesplitted.length < (equipage.getObjetCount()+1)) {
 							System.out.println("Erreur à votre ligne [" + ligneindex + "] la liste de preference n'a pas assez d'objets! Lors de la tentative d'ajout d'objet l'equipage a :" + equipage.getObjetCount() + "objets.");
 							bReader.close();
