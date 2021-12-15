@@ -22,6 +22,7 @@ public class Equipage {
 	 */
 	public Equipage() {
 		adjacence = new HashMap<Pirate, List<Pirate>>();
+		objets = new ArrayList<String>();
 	}
 
 	/**
