@@ -80,7 +80,7 @@ public class Menu {
 					case 1 :
 						while(k <= 0) {
 							try {
-								System.out.println("Veuillez choisir un k > 0 pour détermnier combien de fois l'algorithme va tenter de choisir des pirates à échanger: ");
+								System.out.println("Veuillez choisir un entier k > 0 afin de déterminer combien de fois l'algorithme va tenter d'échanger des pirates: ");
 								k=sc.nextInt();
 							}catch(InputMismatchException E){
 								System.err.println("Erreur, veuillez écrire un entier");
