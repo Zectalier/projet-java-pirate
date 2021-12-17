@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * Class permettant de gÈrer les diffÈrents menu intervenant dans la mÈthode main
+ * Class permettant de g√©rer les diff√©rents menu intervenant dans la m√©thode main
  * @author Constantine Benjohnson
  * @author Hu Tony
  *
@@ -13,14 +13,14 @@ import java.util.Scanner;
 public class Menu {
 
 	/**
-	 * MÈthode demandant ‡ l'utilisateur de saisir le nom d'un fichier afin de rÈcuperer 
-	 * un Èquipage ‡ l'aide de la mÈthode prÈsente dans ParserEquipage.java<p>
-	 * La mÈthode cherche le fichier ‡ l'emplacement "save/'nomfichier'"
+	 * M√©thode demandant √† l'utilisateur de saisir le nom d'un fichier afin de r√©cuperer 
+	 * un √©quipage √† l'aide de la m√©thode pr√©sente dans ParserEquipage.java<p>
+	 * La m√©thode cherche le fichier √† l'emplacement "save/'nomfichier'"
 	 * @param sc Scanner
 	 * @return Equipage
 	 */
 	public static Equipage loadFile(Scanner sc) {
-		System.out.println("Veuillez saisir le nom du fichier ‡ charger");
+		System.out.println("Veuillez saisir le nom du fichier √† charger");
 		String nomFichier = "";
 		File file;
 		Equipage equipage = new Equipage();
@@ -29,7 +29,7 @@ public class Menu {
 			file = new File("save/"+nomFichier);
 			if(!file.exists()) {
 				nomFichier = "";
-				System.err.println("Nom de fichier invalide! Veuillez rÈessayer");
+				System.err.println("Nom de fichier invalide! Veuillez r√©essayer");
 			}
 			else {
 				equipage = ParserEquipage.parseFile(nomFichier);
@@ -42,7 +42,7 @@ public class Menu {
 	}
 	
 	/**
-	 * MÈthode permettant d'afficher le premier menu et de traiter les entrÈes utilisateurs.
+	 * M√©thode permettant d'afficher le premier menu et de traiter les entr√©es utilisateurs.
 	 * @param equipage un Equipage
 	 * @param sc Scanner
 	 */
@@ -55,7 +55,7 @@ public class Menu {
 		try {
 			System.out.println("Bienvenue Capitaine!");
 			Thread.sleep(1000);
-			System.out.println("\nVoici votre Èquipage, chacun des pirates vous ont fourni leur liste de prÈfÈrence mais il semblerait qu'il y ai des tensions entre vos hommes... ");
+			System.out.println("\nVoici votre √©quipage, chacun des pirates vous ont fourni leur liste de pr√©f√©rence mais il semblerait qu'il y ai des tensions entre vos hommes... ");
 			Thread.sleep(2000);
 			System.out.println(equipage.toString());
 			Thread.sleep(4000);
@@ -66,33 +66,33 @@ public class Menu {
 		do {
 			System.out.println("***** MENU *****");
 
-			System.out.println("1- RÈsolution automatique");
-			System.out.println("2- RÈsolution manuelle");
+			System.out.println("1- R√©solution automatique");
+			System.out.println("2- R√©solution manuelle");
 			System.out.println("3- Sauvegarder");
 			System.out.println("4- Fin");
 			try {
 				choix=sc.nextInt();
 			}catch(InputMismatchException E){
-				System.err.println("Erreur, veuillez Ècrire un entier");
+				System.err.println("Erreur, veuillez √©crire un entier");
 				sc.nextLine();
 			}
 				switch(choix) {
 					case 1 :
 						while(k <= 0) {
 							try {
-								System.out.println("Veuillez choisir un k > 0 : ");
+								System.out.println("Veuillez choisir un k > 0 pour d√©termnier combien de fois l'algorithme va tenter de choisir des pirates √† √©changer: ");
 								k=sc.nextInt();
 							}catch(InputMismatchException E){
-								System.err.println("Erreur, veuillez Ècrire un entier");
+								System.err.println("Erreur, veuillez √©crire un entier");
 								sc.nextLine();
 							}
 						}
 						affectation = new AffectationAutomatique(equipage,k);
-						System.out.println("Voici la solution proposÈ par l'algorithme : ");
+						System.out.println("Voici la solution propos√© par l'algorithme : ");
 						try {
 							System.out.println(affectation.toString());
 							Thread.sleep(3000);
-							System.out.println("Le cout est Èquivalent ‡ : " + affectation.calculCout()+"\n");
+							System.out.println("Le cout est √©quivalent √† : " + affectation.calculCout()+"\n");
 							Thread.sleep(1000);
 						}catch (InterruptedException e) {
 							e.printStackTrace();
@@ -138,7 +138,7 @@ public class Menu {
 	}
 	
 	/**
-	 * MÈthode du menu traitant de la rÈsolution manuelle ( provenenant de la partie 1 du sujet )
+	 * M√©thode du menu traitant de la r√©solution manuelle ( provenenant de la partie 1 du sujet )
 	 * @param affectation une Affectation
 	 * @param equipage un Equipage
 	 * @param sc Scanner
@@ -160,12 +160,12 @@ public class Menu {
 			
 			System.out.println("***** MENU numero 2 *****");
 			System.out.println("1- Echanger objet");
-			System.out.println("2- Afficher co√ªt");
+			System.out.println("2- Afficher co√É¬ªt");
 			System.out.println("3- Fin");
 			try {
 				option=sc.nextInt();
 			}catch(InputMismatchException E){
-				System.err.println("Erreur, veuillez Ècrire un int");
+				System.err.println("Erreur, veuillez √©crire un int");
 				sc.nextLine();
 			}
 			
@@ -178,10 +178,10 @@ public class Menu {
 					o2 = sc.next();
 					switch(affectation.echanger(o1,o2)) {
 						case 1:
-							System.out.println("Erreur, premier pirate qui ne figure pas dans l'Èquipage");
+							System.out.println("Erreur, premier pirate qui ne figure pas dans l'√©quipage");
 							break;
 						case 2:
-							System.out.println("Erreur, deuxieme pirate qui ne figure pas dans l'Èquipage");
+							System.out.println("Erreur, deuxieme pirate qui ne figure pas dans l'√©quipage");
 							break;
 						case 0:
 							System.out.println("Voici la nouvelle liste d'affectation");
@@ -196,7 +196,7 @@ public class Menu {
 					break;
 					
 				case 2 : 
-					System.out.println("Le cout est Èquivalent ‡ : " + affectation.calculCout());
+					System.out.println("Le cout est √©quivalent √† : " + affectation.calculCout());
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
